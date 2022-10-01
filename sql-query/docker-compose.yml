@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    hostname: mysql
+    restart: always
+    env_file:
+      - ./mysql.env
+    volumes:
+      - ./database/mysql/data:/var/lib/mysql:rw
+      - ./technical_test.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    hostname: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      ADMINER_DEFAULT_SERVER: mysql

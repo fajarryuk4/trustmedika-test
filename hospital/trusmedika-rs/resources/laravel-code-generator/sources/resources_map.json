@@ -1,0 +1,7 @@
+[
+    {
+        "model-name": "Unit",
+        "resource-file": "units.json",
+        "table-name": "master_unit"
+    }
+]
